@@ -16,8 +16,8 @@ const songs = [
   },
   {
     name:"4. Minecraft",
-    src:"https://downloads.khinsider.com/game-soundtracks/album/minecraft/1-08.%2520Minecraft.mp3",
-    color:"chill"
+    src:"https://lambda.vgmtreasurechest.com/soundtracks/minecraft/ikyqfeel/1-08.%20Minecraft.mp3",
+    color:"minecraft"
   }
 ];
 
@@ -25,91 +25,32 @@ let i = 0;
 
 const audio = document.getElementById("audio");
 const title = document.getElementById("title");
-const vinyl = document.getElementById("vinyl");
-const arm = document.getElementById("arm");
-const deck = document.getElementById("deck");
-const progress = document.getElementById("progress");
+const jukebox = document.getElementById("jukebox");
 
-const playBtn = document.getElementById("play");
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("prev");
-
-/* AUDIO SETTINGS */
-audio.preload = "auto";
-audio.volume = 1;
-audio.muted = false;
-
-/* LOAD SONG */
-function loadSong(index){
-  const song = songs[index];
-
-  audio.src = song.src;
+function loadSong(){
+  audio.pause();
+  audio.src = songs[i].src;
   audio.load();
-
-  title.textContent = song.name;
-  deck.className = "deck " + song.class;
-
-  progress.value = 0;
+  title.textContent = songs[i].name;
+  jukebox.className = "jukebox " + songs[i].color;
 }
 
-/* UI UPDATE */
-function updateUI(){
-  if(audio.paused){
-    vinyl.classList.remove("spin");
-    arm.classList.remove("active");
-    playBtn.textContent = "▶";
-  } else {
-    vinyl.classList.add("spin");
-    arm.classList.add("active");
-    playBtn.textContent = "⏸";
-  }
+function playSong(){
+  audio.play().catch(()=>{});
 }
 
-/* PLAY BUTTON */
-playBtn.addEventListener("click", async () => {
-  try {
-    if(!audio.src){
-      loadSong(i);
-    }
+function pauseSong(){
+  audio.pause();
+}
 
-    if(audio.paused){
-      await audio.play();
-    } else {
-      audio.pause();
-    }
-  } catch(e){
-    console.log(e);
-  }
-});
+function next(){
+  i = (i+1) % songs.length;
+  loadSong();
+}
 
-/* NEXT */
-nextBtn.addEventListener("click", async () => {
-  i = (i + 1) % songs.length;
-  loadSong(i);
-  try { await audio.play(); } catch(e){}
-});
+function prev(){
+  i = (i-1+songs.length) % songs.length;
+  loadSong();
+}
 
-/* PREV */
-prevBtn.addEventListener("click", async () => {
-  i = (i - 1 + songs.length) % songs.length;
-  loadSong(i);
-  try { await audio.play(); } catch(e){}
-});
-
-/* KEEP UI SYNCED */
-audio.addEventListener("play", updateUI);
-audio.addEventListener("pause", updateUI);
-
-/* AUTO NEXT */
-audio.addEventListener("ended", async () => {
-  i = (i + 1) % songs.length;
-  loadSong(i);
-  try { await audio.play(); } catch(e){}
-});
-
-/* PROGRESS UPDATE (VIEW ONLY) */
-audio.addEventListener("timeupdate", () => {
-  if(audio.duration){
-    progress.value = (audio.currentTime / audio.duration) * 100;
-  }
-});
+loadSong();
