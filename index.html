@@ -3,71 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Jukebox</title>
-
-<style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#0a0a0a;
-  font-family:Arial;
-  color:white;
-}
-
-.jukebox{
-  width:320px;
-  height:500px;
-  border-radius:40px;
-  background:linear-gradient(145deg,#111,#222);
-  box-shadow:
-    inset 0 0 40px rgba(255,255,255,0.05),
-    0 0 40px rgba(0,0,0,0.8);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:20px;
-}
-
-.jukebox.chill{ box-shadow:0 0 40px #00f0ff; }
-.jukebox.restaurant{ box-shadow:0 0 40px #ff8800; }
-.jukebox.ocean{ box-shadow:0 0 40px #0066ff; }
-.jukebox.minecraft{ box-shadow:0 0 40px #00ff66; }
-
-.screen{
-  width:90%;
-  height:120px;
-  border-radius:20px;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-  text-align:center;
-  padding:10px;
-  margin-bottom:20px;
-}
-
-.controls{
-  display:flex;
-  gap:15px;
-}
-
-button{
-  padding:12px 16px;
-  border:none;
-  border-radius:12px;
-  background:#111;
-  color:white;
-  cursor:pointer;
-}
-
-button:hover{
-  background:#222;
-  transform:scale(1.1);
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -85,64 +21,6 @@ button:hover{
 
 <audio id="audio"></audio>
 
-<script>
-const songs = [
-  {
-    name:"1. Chill",
-    src:"https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/bchfeelt/01.%20Classical.mp3",
-    color:"chill"
-  },
-  {
-    name:"2. Restaurant",
-    src:"https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/adomsbgb/08.%20Slow%20Piano.mp3",
-    color:"restaurant"
-  },
-  {
-    name:"3. Ocean",
-    src:"https://nu.vgmtreasurechest.com/soundtracks/fortnite-music-packs-gamerip-2017/iyrrfbre/1-08.%20Coral%20Chorus.mp3",
-    color:"ocean"
-  },
-  {
-    name:"4. Minecraft",
-    src:"https://lambda.vgmtreasurechest.com/soundtracks/minecraft/ikyqfeel/1-08.%20Minecraft.mp3",
-    color:"minecraft"
-  }
-];
-
-let i = 0;
-
-const audio = document.getElementById("audio");
-const title = document.getElementById("title");
-const jukebox = document.getElementById("jukebox");
-
-function loadSong(){
-  audio.pause();
-  audio.src = songs[i].src;
-  audio.load();
-  title.textContent = songs[i].name;
-  jukebox.className = "jukebox " + songs[i].color;
-}
-
-function playSong(){
-  audio.play().catch(()=>{});
-}
-
-function pauseSong(){
-  audio.pause();
-}
-
-function next(){
-  i = (i+1) % songs.length;
-  loadSong();
-}
-
-function prev(){
-  i = (i-1+songs.length) % songs.length;
-  loadSong();
-}
-
-loadSong();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
