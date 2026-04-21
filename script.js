@@ -1,21 +1,21 @@
 const songs = [
   {
-    name:"1. Chill",
+    name:"Chill",
     src:"https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/bchfeelt/01.%20Classical.mp3",
     color:"chill"
   },
   {
-    name:"2. Restaurant",
+    name:"Restaurant",
     src:"https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/adomsbgb/08.%20Slow%20Piano.mp3",
     color:"restaurant"
   },
   {
-    name:"3. Ocean",
+    name:"Ocean",
     src:"https://nu.vgmtreasurechest.com/soundtracks/fortnite-music-packs-gamerip-2017/iyrrfbre/1-08.%20Coral%20Chorus.mp3",
     color:"ocean"
   },
   {
-    name:"4. Minecraft",
+    name:"Minecraft",
     src:"https://dn710204.ca.archive.org/0/items/08-minecraft_202302/08%20-%20Minecraft.mp3",
     color:"minecraft"
   }
@@ -25,12 +25,7 @@ let i = 0;
 
 const audio = document.getElementById("audio");
 const title = document.getElementById("title");
-const jukebox = document.getElementById("jukebox");
-
-/* CREATE RECORD */
-const record = document.createElement("div");
-record.className = "record";
-document.getElementById("jukebox").appendChild(record);
+const vinyl = document.getElementById("vinyl");
 
 function loadSong(){
   audio.pause();
@@ -39,19 +34,18 @@ function loadSong(){
 
   title.textContent = songs[i].name;
 
-  jukebox.className = "jukebox " + songs[i].color;
-
-  record.classList.remove("playing");
+  vinyl.className = "vinyl " + songs[i].color;
+  vinyl.style.animationPlayState = "paused";
 }
 
 function playSong(){
   audio.play().catch(()=>{});
-  record.classList.add("playing");
+  vinyl.style.animationPlayState = "running";
 }
 
 function pauseSong(){
   audio.pause();
-  record.classList.remove("playing");
+  vinyl.style.animationPlayState = "paused";
 }
 
 function next(){
