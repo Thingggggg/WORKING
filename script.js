@@ -27,6 +27,11 @@ const audio = document.getElementById("audio");
 const title = document.getElementById("title");
 const jukebox = document.getElementById("jukebox");
 
+/* CREATE RECORD */
+const record = document.createElement("div");
+record.className = "record";
+document.getElementById("jukebox").appendChild(record);
+
 function loadSong(){
   audio.pause();
   audio.src = songs[i].src;
@@ -34,16 +39,19 @@ function loadSong(){
 
   title.textContent = songs[i].name;
 
-  // APPLY GLOW
   jukebox.className = "jukebox " + songs[i].color;
+
+  record.classList.remove("playing");
 }
 
 function playSong(){
   audio.play().catch(()=>{});
+  record.classList.add("playing");
 }
 
 function pauseSong(){
   audio.pause();
+  record.classList.remove("playing");
 }
 
 function next(){
