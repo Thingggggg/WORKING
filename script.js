@@ -29,14 +29,21 @@ const jukebox = document.getElementById("jukebox");
 
 function loadSong(){
   audio.pause();
+
+  // FORCE reload (fixes broken playback)
+  audio.src = "";
   audio.src = songs[i].src;
   audio.load();
+
   title.textContent = songs[i].name;
-  jukebox.className = "jukebox " + songs[i].color;
+
+  // FIX GLOW RESET
+  jukebox.className = "jukebox";
+  jukebox.classList.add(songs[i].color);
 }
 
 function playSong(){
-  audio.play().catch(()=>{});
+  audio.play().catch(err => console.log("play error:", err));
 }
 
 function pauseSong(){
