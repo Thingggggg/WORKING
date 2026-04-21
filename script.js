@@ -1,18 +1,23 @@
 const songs = [
   {
-    name: "1 - Chill",
-    src: "https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/bchfeelt/01.%20Classical.mp3",
-    class: "chill"
+    name:"1. Chill",
+    src:"https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/bchfeelt/01.%20Classical.mp3",
+    color:"chill"
   },
   {
-    name: "2 - Restaurant",
-    src: "https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/adomsbgb/08.%20Slow%20Piano.mp3",
-    class: "restaurant"
+    name:"2. Restaurant",
+    src:"https://lambda.vgmtreasurechest.com/soundtracks/restaurant-tycoon-2-roblox-gamerip-2021/adomsbgb/08.%20Slow%20Piano.mp3",
+    color:"restaurant"
   },
   {
-    name: "3 - Ocean 🌊",
-    src: "https://nu.vgmtreasurechest.com/soundtracks/fortnite-music-packs-gamerip-2017/iyrrfbre/1-08.%20Coral%20Chorus.mp3",
-    class: "ocean"
+    name:"3. Ocean",
+    src:"https://nu.vgmtreasurechest.com/soundtracks/fortnite-music-packs-gamerip-2017/iyrrfbre/1-08.%20Coral%20Chorus.mp3",
+    color:"ocean"
+  },
+  {
+    name:"4. Minecraft",
+    src:"https://downloads.khinsider.com/game-soundtracks/album/minecraft/1-08.%2520Minecraft.mp3",
+    color:"chill"
   }
 ];
 
