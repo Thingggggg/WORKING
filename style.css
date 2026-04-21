@@ -7,6 +7,7 @@ body{
   background:#0a0a0a;
   font-family:Arial;
   color:white;
+  overflow:hidden;
 }
 
 .jukebox{
@@ -21,37 +22,59 @@ body{
   flex-direction:column;
   align-items:center;
   padding:20px;
+  position:relative;
 }
 
-/* GLOW COLORS */
+/* GLOW */
 .jukebox.chill{ box-shadow:0 0 40px #00f0ff; }
 .jukebox.restaurant{ box-shadow:0 0 40px #ff8800; }
 .jukebox.ocean{ box-shadow:0 0 40px #0066ff; }
 .jukebox.minecraft{ box-shadow:0 0 40px #00ff66; }
 
+/* SCREEN */
 .screen{
   width:90%;
-  height:120px;
-  border-radius:20px;
+  height:80px;
+  border-radius:15px;
   background:#000;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:18px;
-  text-align:center;
-  padding:10px;
-  margin-bottom:20px;
+  font-size:16px;
+  margin-bottom:15px;
 }
 
+/* RECORD */
+.record{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:radial-gradient(circle,#222 20%,#000 60%);
+  border:6px solid #111;
+  margin:20px 0;
+  animation:spin 3s linear infinite;
+  animation-play-state:paused;
+}
+
+.record.playing{
+  animation-play-state:running;
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+/* BUTTONS */
 .controls{
   display:flex;
-  gap:15px;
+  gap:10px;
 }
 
 button{
-  padding:12px 16px;
+  padding:10px 14px;
   border:none;
-  border-radius:12px;
+  border-radius:10px;
   background:#111;
   color:white;
   cursor:pointer;
