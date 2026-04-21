@@ -16,7 +16,7 @@ const songs = [
   },
   {
     name:"4. Minecraft",
-    src:"https://lambda.vgmtreasurechest.com/soundtracks/minecraft/ikyqfeel/1-08.%20Minecraft.mp3",
+    src:"https://dn710204.ca.archive.org/0/items/08-minecraft_202302/08%20-%20Minecraft.mp3",
     color:"minecraft"
   }
 ];
@@ -29,21 +29,17 @@ const jukebox = document.getElementById("jukebox");
 
 function loadSong(){
   audio.pause();
-
-  // FORCE reload (fixes broken playback)
-  audio.src = "";
   audio.src = songs[i].src;
   audio.load();
 
   title.textContent = songs[i].name;
 
-  // FIX GLOW RESET
-  jukebox.className = "jukebox";
-  jukebox.classList.add(songs[i].color);
+  // APPLY GLOW
+  jukebox.className = "jukebox " + songs[i].color;
 }
 
 function playSong(){
-  audio.play().catch(err => console.log("play error:", err));
+  audio.play().catch(()=>{});
 }
 
 function pauseSong(){
